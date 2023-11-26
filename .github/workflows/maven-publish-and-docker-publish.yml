@@ -34,7 +34,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ github.token }}
     
-    - name: Upload artifact for Docker Job
+    - name: upload artifact for Docker Job
       uses: actions/Upload-artifact@v3
       with:
         name: java-app
@@ -54,9 +54,9 @@ jobs:
       uses: actions/download-artifact@v3
       with:
         name: java-app
-    -name: Logging in to Docker
-     run: docker login ghcr.io -u szucslaszloit -p ${{ github.token }}
-    -name: Build the Docker image
-     run: docker build . --file Dockerfile --tag ghcr.io/szucslaszloit/cubix/cloudnative/demo:actions
-    -name: Publish the Docker image
-     run: docker push ghcr.io/szucslaszloit/cubix/cloudnative/demo:actions
+    - name: Logging in to Docker
+      run: docker login ghcr.io -u szucslaszloit -p ${{ github.token }}
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag ghcr.io/szucslaszloit/cubix/cloudnative/demo:actions
+    - name: Publish the Docker image
+      run: docker push ghcr.io/szucslaszloit/cubix/cloudnative/demo:actions
